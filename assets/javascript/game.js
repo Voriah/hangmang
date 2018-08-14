@@ -271,6 +271,8 @@ document.onkeypress = function (evt) {
     if (guesses === 0) {
       def.style.display = "initial";
       g.innerHTML = guesses;
+      var audio = new Audio('assets/audio/defeat.mp3');
+      audio.play(); 
     }
     
     g.innerHTML = guesses;
