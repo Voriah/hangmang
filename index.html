@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>Hangman</title>
 </head>
 <body>
@@ -22,9 +22,18 @@
       <center><p id="h"></p></center>
       <center><div id="box"></div></center>
 
-  
+  </div>
   <!-- <button onclick="setWord(mtg)">MTG</button> -->
-  <center><button onclick="setWord(ow)">Overwatch</button></center>
+  <div class="row start"> 
+    <a onclick="setWord(ow)" id="owBtn" class="waves-effect waves-light btn-large grey">
+      <i class="material-icons right"><img class="icon" src="assets/images/owicon.png" alt=""></i>Overwatch
+    </a> 
+    <a onclick="setWord(mtg)" id="mtgBtn" class="waves-effect waves-light btn-large brown darken-4">
+      <i class="material-icons right"><img class="icon" src="assets/images/mtgicon.png" alt=""></i>MTG
+    </a> 
+    <a onclick="setWord(ow)" id="lotrBtn" class="waves-effect waves-light btn-large  black">
+      <i class="material-icons right"><img class="icon" src="assets/images/lotricon.png" alt=""></i>LOTR
+    </a> 
   </div>
 
   

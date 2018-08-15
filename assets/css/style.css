@@ -2,6 +2,14 @@
     font-family: ow;
     src: url("../fonts/ow.woff");
 }
+@font-face {
+    font-family: magic;
+    src: url("../fonts/mag.ttf");
+}
+@font-face {
+    font-family: ring;
+    src: url("../fonts/ring.ttf");
+}
 
 #box {
   display: inline;
@@ -31,6 +39,7 @@ p{
   font-size: 60px;
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);
   font-weight: bold;
+  margin: 20px 0 0 0;
 }
 
 div {
@@ -39,14 +48,45 @@ div {
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);
 }
 
+#mtgBtn {
+  font-family: magic;
+  color: lightskyblue;
+  letter-spacing: 10px;
+  font-size: 40%;
+  text-shadow: 0px 0px 10px rgb(251, 255, 0);
+}
+
+#owBtn {
+  font-size: 20px;
+  color: black;
+}
+
+#lotrBtn {
+  font-family: ring;
+  text-shadow: 0px 0px 10px rgb(95, 18, 18);
+  letter-spacing: 5px;
+  color: gold;
+}
+
+.icon {
+  width: 25px;
+}
+
+a {
+  font-size: 40px;
+}
+
+.start {
+  width: 30%;
+  margin: auto;
+  justify-content: space-evenly;
+  padding: 0 0 0 0;
+  display: flex;
+  margin-top: 30px;
+}
 
 body {
   background: url("../images/over.jpg") no-repeat 0 0;
   background-size: cover;
   font-family: ow;
-}
-
-button {
-  font-family: ow;
-  font-weight: bold;
 }
