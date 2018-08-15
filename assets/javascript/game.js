@@ -6,23 +6,19 @@ var right = 0;
 
 function setWord(w) {
   var a = Math.floor(Math.random() * w.length);
+  $('body').css('background-image', 'url("assets/images/over.jpg")');
+  $("#box").empty();
   
   word.innerHTML = w[a];
   
-  var x = document.getElementsByClassName("letters");
-      for (let i = 0; i < x.length; i++) {
-        x[i].style.visibility = "hidden";
-      }
-  for (let i = 0; i < w[a].length; i++) {
-    document.getElementById("letter"+i).style.visibility = "initial";
-    document.getElementById("letter"+i).innerHTML = "_";
+  for (let i = 0; i < w[a].length; i++) {   
+    $('#box').append(`<div class="letters" id="letter${i}">_</div>`);
   }
+
   guesses = 9;
-  vic.style.display = "none";
-  def.style.display = "none";
   guessed = [""];
   right = 0;
-  g.innerHTML = guesses;
+  g.innerHTML = guesses + " guesses remaining";
 
   var hint = word.innerHTML;
 
@@ -137,8 +133,8 @@ document.onkeypress = function (evt) {
       right++;
       yes = 1;
       if (right === ans.length) {
-        vic.style.display = "initial";
-
+        
+        $('body').css('background-image', 'url("assets/images/owvictory.gif")');
         var hint = word.innerHTML;
         
         switch (hint) {
@@ -253,13 +249,6 @@ document.onkeypress = function (evt) {
 
         }
 
-
-
-
-
-
-
-
       }
     }
   }
@@ -269,12 +258,12 @@ document.onkeypress = function (evt) {
     }
 
     if (guesses === 0) {
-      def.style.display = "initial";
-      g.innerHTML = guesses;
+      $('body').css('background-image', 'url("assets/images/owdefeat.gif")');
+      g.innerHTML = guesses + " guesses remaining";
       var audio = new Audio('assets/audio/defeat.mp3');
       audio.play(); 
     }
     
-    g.innerHTML = guesses;
+    g.innerHTML = guesses + " guesses remaining";
 
 };
