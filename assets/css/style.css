@@ -8,7 +8,11 @@
 }
 @font-face {
     font-family: ring;
-    src: url("../fonts/ring.ttf");
+    src: url("../fonts/ring.ttf");  
+}
+@font-face {
+    font-family: boss;
+    src: url("../fonts/exo.ttf");  
 }
 
 #box {
@@ -33,6 +37,7 @@
 
 #titleContainer {
   height: 10px;
+  margin-bottom: 50px;
 }
 
 p{
@@ -87,7 +92,7 @@ a {
 }
 
 body {
-  background: url("../images/over.jpg") no-repeat 0 0;
+  background: url("../images/hangmanwall.jpg") no-repeat 0 0;
   background-size: cover;
-  font-family: ow;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }

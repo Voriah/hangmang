@@ -1,9 +1,14 @@
 var mtg = ["Ajani", "Chandra", "Dack", "Domri", "Elspeth", "Garruk", "Gideon", "Jace", "Karn", "Kiora", "Koth", "Liliana", "Narset", "Nicol", "Nissa", "Ob", "Ral", "Sarkhan", "Sorin", "Tamiyo", "Tezzeret", "Tibalt", "Ugin", "Venser", "Vraska", "Xenagos"];
 var ow = ["DVA", "Orisa", "Reinhardt", "Roadhog", "Winston", "Zarya", "Bastion", "Doomfist", "Genji", "Hanzo", "Junkrat", "McCree", "Mei", "Pharah", "Reaper", "Soldier", "Sombra", "Symmetra", "Torbjorn", "Tracer", "Widowmaker", "Ana", "Brigitte", "Lucio", "Mercy", "Moira", "Zenyatta"];
 var lot = ["Frodo", "Gandalf", "Sauron", "Aragorn", "Legolas", "Gollum", "Bilbo", "Arwen", "Galadriel", "Gimli", "Balrog", "Saruman", "Elrond", "Samwise", "Eowyn", "Boromir", "Peregrin", "Faramir", "Meriadoc", "Theoden", "Eomer", "Denethor", "Treebeard", "Shelob", "Isildur", "Celeborn", "Grima"];
+var bm = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var guessed = [];
 var guesses = 0;
 var right = 0;
+var winScreen = "";
+var loseScreen = "";
+var wins = 0;
+var losses = 0;
 
 function setWord(w) {
   var a = Math.floor(Math.random() * w.length);
@@ -12,18 +17,24 @@ function setWord(w) {
     $('body').css('background-image', 'url("assets/images/over.jpg")');
     $("p, div, body").css("font-family", "ow");
     $("p, div, body").css("color", "black");
+    winScreen = "assets/images/owvictory.gif";
+    loseScreen = "assets/images/owdefeat.gif";
+    
+
   }
   else if (w ===  mtg) {
     $('body').css('background-image', 'url("assets/images/magicback.jpg")');
     $("p, div, body").css("font-family", "magic");
     $("p, div, body").css("color", "black");
+    winScreen = "assets/images/magicvictory.gif";
+    loseScreen = "assets/images/magicdefeat.gif";
   }
   else if (w === lot) {
     $('body').css('background-image', 'url("assets/images/lotrback.jpg")');
     $("p, div, body").css("font-family", "ring");
     $("p, div, body").css("color", "gold");
-    
-
+    winScreen = "assets/images/lotrvictory.gif";
+    loseScreen = "assets/images/lotrdefeat.gif";
   }
   
   $("#box").empty();
@@ -38,6 +49,8 @@ function setWord(w) {
   guessed = [""];
   right = 0;
   g.innerHTML = guesses + " Guesses Remaining";
+  win.innerHTML = wins + " Wins";
+  lose.innerHTML = losses + " Losses";
 
   var hint = word.innerHTML;
 
@@ -284,6 +297,43 @@ function setWord(w) {
 
 }
 
+
+function bossMode(w) {
+
+    $('body').css('background-image', 'url("assets/images/bosswall.jpg")');
+    $("p, div, body").css("font-family", "boss");
+    $("p, div, body").css("color", "black");
+    $("p, div, body").css("text-shadow", "red");
+    $("#titleContainer, #h, #butts, #score").remove();
+
+
+    var a = Math.floor(Math.random() * w.length);
+    $("#box").empty();
+
+    var bossW = "";
+
+
+    for (let i = 0; i < 20; i++) {
+        var x = Math.floor(Math.random() * 26);
+        bossW = bossW.concat(w[x]);
+    }
+
+    word.innerHTML = bossW;
+
+    for (let i = 0; i < word.innerHTML.length; i++) {
+        $('#box').append(`<div class="letters" id="letter${i}">_</div>`);
+    }
+    wins = 0;
+    guesses = 9;
+    guessed = [""];
+    right = 0;
+    g.innerHTML = guesses + " Guesses Remaining";
+
+
+}
+
+
+
 document.onkeypress = function (evt) {
   evt = evt || window.event;
   var charCode = evt.keyCode || evt.which;
@@ -308,8 +358,13 @@ document.onkeypress = function (evt) {
       right++;
       yes = 1;
       if (right === ans.length) {
+        wins++;
+        win.innerHTML = wins + " Wins";
+          
+
+
+        $('body').css('background-image', `url("${winScreen}")`);
         
-        $('body').css('background-image', 'url("assets/images/owvictory.gif")');
         var hint = word.innerHTML;
         
         switch (hint) {
@@ -426,6 +481,10 @@ document.onkeypress = function (evt) {
 
       }
     }
+    if (wins === 10) {
+        bossMode(bm);
+    }
+
   }
  
     if (yes === 0) {
@@ -433,12 +492,20 @@ document.onkeypress = function (evt) {
     }
 
     if (guesses === 0) {
-      $('body').css('background-image', 'url("assets/images/owdefeat.gif")');
+      $('body').css('background-image', `url("${loseScreen}")`);
       g.innerHTML = guesses + " Guesses Remaining";
       var audio = new Audio('assets/audio/defeat.mp3');
       audio.play(); 
+        losses++;
+        lose.innerHTML = losses + " Losses";
     }
     
     g.innerHTML = guesses + " Guesses Remaining";
 
+
+
+
+
+
 };
+

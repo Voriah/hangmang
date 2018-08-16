@@ -24,7 +24,7 @@
 
   </div>
   <!-- <button onclick="setWord(mtg)">MTG</button> -->
-  <div class="row start"> 
+  <div class="row start" id="butts"> 
     <a onclick="setWord(ow)" id="owBtn" class="waves-effect waves-light btn-large grey">
       <i class="material-icons right"><img class="icon" src="assets/images/owicon.png" alt=""></i>Overwatch
     </a> 
@@ -35,7 +35,10 @@
       <i class="material-icons right"><img class="icon" src="assets/images/lotricon.png" alt=""></i>LOTR
     </a> 
   </div>
-
+  <div class="row start" id="score">
+    <div id="win"></div>
+    <div id="lose"></div>
+  </div>
   
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
