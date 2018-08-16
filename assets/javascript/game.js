@@ -306,6 +306,8 @@ function bossMode(w) {
     $("p, div, body").css("text-shadow", "red");
     $("#titleContainer, #h, #butts, #score").remove();
 
+    var audio = new Audio('assets/audio/diablo.mp3');
+    audio.play();
 
     var a = Math.floor(Math.random() * w.length);
     $("#box").empty();
