@@ -1,28 +1,56 @@
 var mtg = ["Ajani", "Chandra", "Dack", "Domri", "Elspeth", "Garruk", "Gideon", "Jace", "Karn", "Kiora", "Koth", "Liliana", "Narset", "Nicol", "Nissa", "Ob", "Ral", "Sarkhan", "Sorin", "Tamiyo", "Tezzeret", "Tibalt", "Ugin", "Venser", "Vraska", "Xenagos"];
 var ow = ["DVA", "Orisa", "Reinhardt", "Roadhog", "Winston", "Zarya", "Bastion", "Doomfist", "Genji", "Hanzo", "Junkrat", "McCree", "Mei", "Pharah", "Reaper", "Soldier", "Sombra", "Symmetra", "Torbjorn", "Tracer", "Widowmaker", "Ana", "Brigitte", "Lucio", "Mercy", "Moira", "Zenyatta"];
+var lot = ["Frodo", "Gandalf", "Sauron", "Aragorn", "Legolas", "Gollum", "Bilbo", "Arwen", "Galadriel", "Gimli", "Balrog", "Saruman", "Elrond", "Samwise", "Eowyn", "Boromir", "Peregrin", "Faramir", "Meriadoc", "Theoden", "Eomer", "Denethor", "Treebeard", "Shelob", "Isildur", "Celeborn", "Grima"];
+var bm = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var guessed = [];
 var guesses = 0;
 var right = 0;
+var winScreen = "";
+var loseScreen = "";
+var wins = 0;
+var losses = 0;
 
 function setWord(w) {
   var a = Math.floor(Math.random() * w.length);
   
+  if (w === ow) {
+    $('body').css('background-image', 'url("assets/images/over.jpg")');
+    $("p, div, body").css("font-family", "ow");
+    $("p, div, body").css("color", "black");
+    winScreen = "assets/images/owvictory.gif";
+    loseScreen = "assets/images/owdefeat.gif";
+    
+
+  }
+  else if (w ===  mtg) {
+    $('body').css('background-image', 'url("assets/images/magicback.jpg")');
+    $("p, div, body").css("font-family", "magic");
+    $("p, div, body").css("color", "black");
+    winScreen = "assets/images/magicvictory.gif";
+    loseScreen = "assets/images/magicdefeat.gif";
+  }
+  else if (w === lot) {
+    $('body').css('background-image', 'url("assets/images/lotrback.jpg")');
+    $("p, div, body").css("font-family", "ring");
+    $("p, div, body").css("color", "gold");
+    winScreen = "assets/images/lotrvictory.jpg";
+    loseScreen = "assets/images/lotrdefeat.jpg";
+  }
+  
+  $("#box").empty();
+  
   word.innerHTML = w[a];
   
-  var x = document.getElementsByClassName("letters");
-      for (let i = 0; i < x.length; i++) {
-        x[i].style.visibility = "hidden";
-      }
-  for (let i = 0; i < w[a].length; i++) {
-    document.getElementById("letter"+i).style.visibility = "initial";
-    document.getElementById("letter"+i).innerHTML = "_";
+  for (let i = 0; i < w[a].length; i++) {   
+    $('#box').append(`<div class="letters" id="letter${i}">_</div>`);
   }
+
   guesses = 9;
-  vic.style.display = "none";
-  def.style.display = "none";
   guessed = [""];
   right = 0;
-  g.innerHTML = guesses;
+  g.innerHTML = guesses + " Guesses Remaining";
+  win.innerHTML = wins + " Wins";
+  lose.innerHTML = losses + " Losses";
 
   var hint = word.innerHTML;
 
@@ -106,12 +134,210 @@ function setWord(w) {
         h.innerHTML = "walk";
         break;
     case "Zarya":
-        h.innerHTML = "I will break you";
+        h.innerHTML = "I Will Break You";
+        break;
+    case "Ajani":
+        h.innerHTML = "Leonin Auramancer";
+        break;
+    case "Chandra":
+        h.innerHTML = "Pyromancer from Kaladesh";
+        break;
+    case "Dack":
+        h.innerHTML = "Psychometry Thief";
+        break;
+    case "Domri":
+        h.innerHTML = "Grull initiate";
+        break;
+    case "Elspeth":
+        h.innerHTML = "Ravaged Plane";
+        break;
+    case "Garruk":
+        h.innerHTML = "Beast Summoner";
+        break;
+    case "Gideon":
+        h.innerHTML = "Heiromancer from Theros";
+        break;
+    case "Jace":
+        h.innerHTML = "Telepath";
+        break;
+    case "Karn":
+        h.innerHTML = "Silver Atificer";
+        break;
+    case "Kiora":
+        h.innerHTML = "Zendikar Merfolk";
+        break;
+    case "Koth":
+        h.innerHTML = "Mirran Geomancer";
+        break;
+    case "Liliana":
+        h.innerHTML = "Necromancer";
+        break;
+    case "Narset":
+        h.innerHTML = "Ojutai Scholar";
+        break;
+    case "Nicol":
+        h.innerHTML = "Necromantic Elder Dragon";
+        break;
+    case "Nissa":
+        h.innerHTML = "Zendikar Elf";
+        break;
+    case "Ob":
+        h.innerHTML = "Death Magic Demon";
+        break;
+    case "Ral":
+        h.innerHTML = "Izzet Guildmage";
+        break;
+    case "Sarkhan":
+        h.innerHTML = "Dragon Worshipper";
+        break;
+    case "Sorin":
+        h.innerHTML = "Lord of Innistrad";
+        break;
+    case "Tamiyo":
+        h.innerHTML = "Moonfolk";
+        break;
+    case "Tezzeret":
+        h.innerHTML = "Esper Artificer";
+        break;
+    case "Tibalt":
+        h.innerHTML = "Half-Devil";
+        break;
+    case "Ugin":
+        h.innerHTML = "Ressurected Elder Dragon";
+        break;
+    case "Venser":
+        h.innerHTML = "Pathmage";
+        break;
+    case "Vraska":
+        h.innerHTML = "Gorgon Assassin";
+        break;
+    case "Xenagos":
+        h.innerHTML = "Theros Satyr";
+        break;
+    case "Frodo":
+        h.innerHTML = "Derp Hobbit";
+        break;
+    case "Gandalf":
+        h.innerHTML = "Mithrandir";
+        break;
+    case "Sauron":
+        h.innerHTML = "The End Game";
+        break;
+    case "Aragorn":
+        h.innerHTML = "He Fell";
+        break;
+    case "Bilbo":
+        h.innerHTML = "Tells the Story";
+        break;
+    case "Gollum":
+        h.innerHTML = "We Don't Have Any Friends";
+        break;
+    case "Arwen":
+        h.innerHTML = "Daughter of Elrond";
+        break;
+    case "Galadriel":
+        h.innerHTML = "The World Is Changed";
+        break;
+    case "Legolas":
+        h.innerHTML = "And My Bow";
+        break;
+    case "Gimli":
+        h.innerHTML = "Not The Beard";
+        break;
+    case "Balrog":
+        h.innerHTML = "He Is Beyond Any Of You";
+        break;
+    case "Saruman":
+        h.innerHTML = "White Wizard";
+        break;
+    case "Elrond":
+        h.innerHTML = "I Was There";
+        break;
+    case "Samwise":
+        h.innerHTML = "Loyal Companion";
+        break;
+    case "Eowyn":
+        h.innerHTML = "I Am No Man";
+        break;
+    case "Boromir":
+        h.innerHTML = "Favorite Son";
+        break;
+    case "Peregrin":
+        h.innerHTML = "A Took";
+        break;
+    case "Faramir":
+        h.innerHTML = "Wants to Impress";
+        break;
+    case "Meriadoc":
+        h.innerHTML = "A Brandybuck";
+        break;
+    case "Theoden":
+        h.innerHTML = "Possessed";
+        break;
+    case "Eomer":
+        h.innerHTML = "Horse Master";
+        break;
+    case "Denethor":
+        h.innerHTML = "Sing Me A Song";
+        break;
+    case "Shelob":
+        h.innerHTML = "Web Weaver";
+        break;
+    case "Treebeard":
+        h.innerHTML = "Ancient";
+        break;
+    case "Isildur":
+        h.innerHTML = "Fall of Man";
+        break;
+    case "Celeborn":
+        h.innerHTML = "Stoic";
+        break;
+    case "Grima":
+        h.innerHTML = "Manipulator";
         break;
     
   }
 
 }
+
+
+function bossMode(w) {
+
+    $('body').css('background-image', 'url("assets/images/bosswall.jpg")');
+    $("p, div, body").css("font-family", "boss");
+    $("p, div, body").css("color", "black");
+    $("p, div, body").css("text-shadow", "red");
+    $("#titleContainer, #h, #butts, #score").remove();
+
+    var audio = new Audio('assets/audio/diablo.mp3');
+    audio.play();
+
+    var a = Math.floor(Math.random() * w.length);
+    $("#box").empty();
+
+    var bossW = "";
+
+
+    for (let i = 0; i < 20; i++) {
+        var x = Math.floor(Math.random() * 26);
+        bossW = bossW.concat(w[x]);
+    }
+
+    word.innerHTML = bossW;
+
+    for (let i = 0; i < word.innerHTML.length; i++) {
+        $('#box').append(`<div class="letters" id="letter${i}">_</div>`);
+    }
+    wins = 0;
+    guesses = 9;
+    guessed = [""];
+    right = 0;
+    g.innerHTML = guesses + " Guesses Remaining";
+
+
+}
+
+
 
 document.onkeypress = function (evt) {
   evt = evt || window.event;
@@ -137,8 +363,13 @@ document.onkeypress = function (evt) {
       right++;
       yes = 1;
       if (right === ans.length) {
-        vic.style.display = "initial";
+        wins++;
+        win.innerHTML = wins + " Wins";
+          
 
+
+        $('body').css('background-image', `url("${winScreen}")`);
+        
         var hint = word.innerHTML;
         
         switch (hint) {
@@ -253,15 +484,12 @@ document.onkeypress = function (evt) {
 
         }
 
-
-
-
-
-
-
-
       }
     }
+    if (wins === 10) {
+        bossMode(bm);
+    }
+
   }
  
     if (yes === 0) {
@@ -269,10 +497,20 @@ document.onkeypress = function (evt) {
     }
 
     if (guesses === 0) {
-      def.style.display = "initial";
-      g.innerHTML = guesses;
+      $('body').css('background-image', `url("${loseScreen}")`);
+      g.innerHTML = guesses + " Guesses Remaining";
+      var audio = new Audio('assets/audio/defeat.mp3');
+      audio.play(); 
+        losses++;
+        lose.innerHTML = losses + " Losses";
     }
     
-    g.innerHTML = guesses;
+    g.innerHTML = guesses + " Guesses Remaining";
+
+
+
+
+
 
 };
+

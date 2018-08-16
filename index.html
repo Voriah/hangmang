@@ -6,38 +6,41 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <title>Hangman</title>
 </head>
 <body>
-  <h1>Hangmang</h1>
-  <p id="word" style="visibility: hidden"></p>
-  <p id="g"></p>
-  <p id="h"></p>
-  <div class="box">
-    <div class="letters" id="letter0">_</div>
-    <div class="letters" id="letter1">_</div>
-    <div class="letters" id="letter2">_</div>
-    <div class="letters" id="letter3">_</div>
-    <div class="letters" id="letter4">_</div>
-    <div class="letters" id="letter5">_</div>
-    <div class="letters" id="letter6">_</div>
-    <div class="letters" id="letter7">_</div>
-    <div class="letters" id="letter8">_</div>
-    <div class="letters" id="letter9">_</div>
-    <div class="letters" id="letter10">_</div>
-    <div class="letters" id="letter11">_</div>
+  
+  <div class="row" id="titleContainer">
+    <center><p id="hang">Hangman</p></center>
   </div>
-  <div id="vicdef"> 
-  <img src="assets/images/owdefeat.gif" id="def" alt="">
-  <img src="assets/images/owvictory.gif" id="vic" alt="">
+  <div class="row">
+  
+      
+      <center><p id="word" style="visibility: hidden"></p></center>
+      <center><p id="g"></p></center>
+      <center><p id="h"></p></center>
+      <center><div id="box"></div></center>
+
   </div>
-  <audio src="assets/audio/dva.ogg"></audio>
-  <button onclick="setWord(mtg)">MTG</button>
-  <button onclick="setWord(ow)">Overwatch</button>
+  <!-- <button onclick="setWord(mtg)">MTG</button> -->
+  <div class="row start" id="butts"> 
+    <a onclick="setWord(ow)" id="owBtn" class="waves-effect waves-light btn-large grey">
+      <i class="material-icons right"><img class="icon" src="assets/images/owicon.png" alt=""></i>Overwatch
+    </a> 
+    <a onclick="setWord(mtg)" id="mtgBtn" class="waves-effect waves-light btn-large brown darken-4">
+      <i class="material-icons right"><img class="icon" src="assets/images/mtgicon.png" alt=""></i>MTG
+    </a> 
+    <a onclick="setWord(lot)" id="lotrBtn" class="waves-effect waves-light btn-large  black">
+      <i class="material-icons right"><img class="icon" src="assets/images/lotricon.png" alt=""></i>LOTR
+    </a> 
+  </div>
+  <div class="row start" id="score">
+    <div id="win"></div>
+    <div id="lose"></div>
+  </div>
   
-  
-  
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <script src="assets/javascript/game.js"></script>
 </body>
