@@ -133,6 +133,9 @@ function setWord(w) {
     case "Zenyatta":
         h.innerHTML = "walk";
         break;
+    case "Zarya":
+        h.innerHTML = "I Will Break You";
+        break;
     case "Ajani":
         h.innerHTML = "Leonin Auramancer";
         break;
