@@ -33,8 +33,8 @@ function setWord(w) {
     $('body').css('background-image', 'url("assets/images/lotrback.jpg")');
     $("p, div, body").css("font-family", "ring");
     $("p, div, body").css("color", "gold");
-    winScreen = "assets/images/lotrvictory.gif";
-    loseScreen = "assets/images/lotrdefeat.gif";
+    winScreen = "assets/images/lotrvictory.jpg";
+    loseScreen = "assets/images/lotrdefeat.jpg";
   }
   
   $("#box").empty();
